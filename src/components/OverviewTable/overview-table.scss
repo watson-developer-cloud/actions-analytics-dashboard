@@ -1,0 +1,128 @@
+.overview-table {
+    background: white;
+}
+
+.overview-table-date {
+    clear: both;
+    margin-left: 16px;
+    font-size: 13px;
+    color: #999999;
+    margin-bottom: 8px;
+}
+
+.overview-table-row {
+    clear: both;
+}
+
+.overview-table-num-label {
+    color: #0f62fe;
+    font-size: 14px;
+    display: inline-block;
+
+}
+
+.overview-table-num {
+    margin-right: 16px;
+    float: right;
+    font-size: 15px;
+}
+
+.overview-table-progress-container {
+    position: relative;
+    clear: both;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+}
+
+.overview-table-progress-back {
+    position: absolute;
+    background: #f4f4f4;
+    height: 4px;
+    width: 100%;
+
+}
+
+.overview-table-green-bar {
+    background: #449b99;
+    position: absolute;
+    height: 4px;
+}
+
+.overview-table-red-bar {
+    background: #e98588;
+    position: absolute;
+    height: 4px;
+}
+
+.overview-table-label {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-left: 16px;
+    margin-right: 16px;
+    font-size: 15px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;    
+}
+
+.overview-table-no-value {
+    padding-top: 20px;
+}
+
+.transparent-text {
+    color: transparent;
+}
+
+.overview-table-badge {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 4px;
+    padding-right: 4px;
+    background: #eee;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+.overview-table-label-wih-badge {
+    display: inline-block;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    margin-left: 4px;
+    color: #0f62fe;
+    font-size: 14px;
+}
+
+.overview-table-arrow {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 4px;
+    width: 14px;
+    height: 14px;
+}
+
+.overview-table-label-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    float: left;
+    width: calc(100% - 85px);
+    height: 24px;
+    margin-left: 16px;
+}
+
+.overview-table-label-wrapper {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.overview-table-label-wrapper::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.overview-table-label {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.overview-table-label::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}

@@ -1,0 +1,49 @@
+.notRecognizedTable {
+    margin-left: 32px;
+    margin-top: 32px;
+    margin-bottom: 256px;
+    width: 60%;
+}
+
+body {
+    overflow: visible;
+}
+
+.notRecognizedTable li {
+    background: #FFFFFF;
+}
+
+.notRecognizedRow {
+    clear: both;
+}
+
+.notRecognizedText {
+    margin-left: 16px;
+    line-height: 30px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 18px;
+    float: left;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: calc(100% - 160px);
+    
+}
+
+.notRecognizedDate {
+    line-height: 30px;
+    text-align: center;
+    padding: 16px;
+    color: #999;
+    font-size: 16px;
+    float: right;
+}
+
+.notRecognizedText {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.notRecognizedText::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}

@@ -1,0 +1,71 @@
+.graph-panel {
+    background: white;
+    width: 100%;
+    margin-right: 48px;
+    margin-left: 48px;
+    margin-top: 24px;
+}
+
+.chartWrapper {
+    z-index: 1;
+    position: relative;
+    margin-left: 24px;
+    margin-right: 24px;
+    margin-bottom: 48px;
+    margin-top: 48px;
+    padding-bottom: 24px;
+}
+
+.chart-holder svg {
+    margin-top: -32px;
+}
+
+.bx--fieldset {
+    position: relative;
+    z-index: 10;
+    margin-top: 56px;
+    margin-right: 24px;
+    float: right;
+}
+
+.bx--checkbox-wrapper {
+    float: left;
+    margin-right: 16px;
+}
+
+#activeUsersCB + .bx--checkbox-label::before{
+    border-color: #38807E;
+}
+
+#activeUsersCB:checked + .bx--checkbox-label::before {
+    background: #38807E;
+    border-color: #38807E;
+}
+
+#conversationsCB + .bx--checkbox-label::before{
+    border-color: #DA5E93;
+}
+
+#conversationsCB:checked + .bx--checkbox-label::before {
+    background: #DA5E93;
+    border-color: #DA5E93;
+}
+
+#requestsCB + .bx--checkbox-label::before{
+    border-color: #9C74F7;
+}
+
+#requestsCB:checked + .bx--checkbox-label::before {
+    background: #9C74F7;
+    border-color: #9C74F7;
+}
+
+.graphNoData {
+    position: absolute;
+    left: 0;
+    color: #999;
+    margin-left: -4px;
+    padding-top: 4px;
+    text-align: left;
+    font-size: 24px;
+}

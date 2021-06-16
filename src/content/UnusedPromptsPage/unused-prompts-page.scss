@@ -1,0 +1,47 @@
+.unusedPromptsTable {
+    margin-left: 32px;
+    margin-top: 32px;
+    margin-bottom: 256px;
+    width: 60%;
+}
+
+body {
+    overflow: visible;
+}
+
+.unusedPromptsTable li {
+    background: #FFFFFF;
+}
+
+.unusedPromptsRow {
+    clear: both;
+}
+
+.unusedPromptsAction {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-left: 16px;
+    padding-left: 4px;
+    padding-right: 4px;
+    background: #eee;
+    border-radius: 4px;
+    font-size: 18px;
+    float: left;
+}
+
+.unusedPromptsStep {
+    margin-top: 16px;
+    font-size: 18px;
+    float: left;
+}
+
+.unusedPromptsArrow {
+    margin-top: 20px;
+    margin-left: 8px;
+    margin-right: 8px;
+    float: left
+}
+
+.noUnused {
+    font-size: 26px;
+}

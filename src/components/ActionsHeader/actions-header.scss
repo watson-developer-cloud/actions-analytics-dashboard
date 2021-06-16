@@ -1,0 +1,60 @@
+#headerDivider {
+    background: #3d3d3d;
+    height: 50%;
+    width: 1px;
+    margin-right: 16px;
+
+}
+
+.bx--list-box__label {
+    color: #ccc;
+    font-size: 15px;
+}
+
+.bx--list-box__label {
+    color: #ccc
+}
+
+.bx--list-box__menu-icon svg {
+    fill: #ccc
+}
+
+.bx--list-box__menu-item__option {
+    color: #ccc
+}
+
+.bx--list-box__menu-item__option:hover {
+    color: #ccc
+}
+
+.bx--list-box__menu-item__selected-icon {
+    fill: #ccc
+}
+
+.bx--list-box__menu-item--active .bx--list-box__menu-item__option {
+    color: #ccc
+}
+
+.bx--list-box__menu-item:hover .bx--list-box__menu-item__option {
+    color: #ccc;
+}
+
+.bx--list-box__menu-item {
+    background: #222
+}
+
+.bx--list-box__menu-item:hover {
+    background: #333;
+}
+
+.bx--dropdown:hover {
+    background: #333;
+}
+
+.bx--list-box__menu-item__option {
+    border: none;
+}
+
+*:focus {
+    outline:none !important;
+}

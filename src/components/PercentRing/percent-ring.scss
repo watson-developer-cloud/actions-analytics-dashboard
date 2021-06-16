@@ -1,0 +1,32 @@
+.rings-wrapper {
+    position: relative;
+    transition: opacity 0.25s
+}
+
+.rings-wrapper svg {
+    position: absolute;
+}
+
+.percent-div {
+    position: absolute;
+    background: transparent;
+    transform: translate(-50%, -50%);
+}
+
+.percent-div * {
+    background: transparent;
+    float: left;
+    position: relative;
+}
+
+.percent-num {
+    font-size: 65px;
+    font-weight: 300;
+}
+
+.percent-sign {
+    margin-left: 1px;
+    margin-top: 50px;
+    font-weight: 400;
+    font-size: 20px;
+}
