@@ -1,6 +1,0 @@
-import { AxisChart } from '../axis-chart';
-import { ChartConfig, AreaChartOptions } from '../interfaces/index';
-export declare class AreaChart extends AxisChart {
-    constructor(holder: Element, chartConfigs: ChartConfig<AreaChartOptions>);
-    getComponents(): any[];
-}

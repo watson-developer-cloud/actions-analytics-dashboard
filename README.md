@@ -1,6 +1,8 @@
 ﻿# Actions Analytics Dashboard
 This application is the frontend for the Actions Analytics Dashboard built using React. This application serves to provide analytics for **Watson Assistant** instances with the new  **Actions** skill. For this front-end to work, you will need to have setup the corresponding logging server (https://github.com/watson-developer-cloud/actions-logging-server) and have a webhook setup correctly in your Watson Assistant instance.
 
+For the tutorial for the complete dashboard setup, visit https://zanderb98.medium.com/actions-analytics-for-watson-assistant-dee3df47ad41
+
 ## Setup
 In this tutorial we will be using the *yarn package manager*. If you do not have yarn installed, please install yarn first (https://yarnpkg.com/getting-started/install)
 

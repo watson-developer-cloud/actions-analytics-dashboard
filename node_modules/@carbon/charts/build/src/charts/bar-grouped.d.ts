@@ -1,6 +1,0 @@
-import { AxisChart } from '../axis-chart';
-import { BarChartOptions, ChartConfig } from '../interfaces/index';
-export declare class GroupedBarChart extends AxisChart {
-    constructor(holder: Element, chartConfigs: ChartConfig<BarChartOptions>);
-    getComponents(): any[];
-}
