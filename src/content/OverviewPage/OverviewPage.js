@@ -53,14 +53,14 @@ class OverviewPage extends React.Component {
               </div>
 
               <div style={{ marginLeft: "8px" }}>
-                <p className="panel-title">Unused prompts</p>
-                <p className="panel-desc">Checks for logs with actions containing prompts where<br></br>the action finishes before the answer is used.</p>
+                <p className="panel-title">Unresolved Conversations</p>
+                <p className="panel-desc">Checks for logs with actions containing prompts where<br></br>the action finishes before the response is used.</p>
                 <div className="engagement-num-div" style={{ marginBottom: "auto"}}>
                     <p className="engagement-num">{ this.props.statsLoaded ? this.props.unusedPrompts : "-" }</p>
                   </div>
                 <div style={ dividerStyle }></div>
                 <Link className='panel-link-div' to="/unused-prompts">
-                  <p className="panel-link">View unused prompts</p><ArrowRight16/>
+                  <p className="panel-link">View unresolved conversations</p><ArrowRight16/>
                 </Link>
               </div>
             </div>

@@ -12,7 +12,7 @@ class UnusedPromptsPage extends React.Component {
     this.props.dispatch({
       type: config.UPDATE,
       update: {
-        pageTitle: "Unused Prompts",
+        pageTitle: "Unresolved Conversations",
         activePage: "UnusedPrompts"
       }
     })
@@ -36,7 +36,7 @@ class UnusedPromptsPage extends React.Component {
     // Show if no unused prompts
     if (this.props.actions.length == 0)
       tableRows.push(<div className="unusedPromptsRow">
-        <p className="unusedPromptsAction">No unused prompts</p>
+        <p className="unusedPromptsAction">No unresolved conversations</p>
         <ArrowRight20 className="unusedPromptsArrow" />
         <p className="unusedPromptsStep">Great job!</p>
         { divider }
