@@ -49,7 +49,7 @@ class ActionsHeader extends React.Component {
                     : <DropdownSkeleton/> }
                     </div>
                     <HeaderGlobalBar>
-                        <HeaderGlobalAction aria-label="Help" onClick={()=> window.open("https://medium.com/@zanderb98/actions-analytics-for-watson-assistant-dee3df47ad41", "_blank")}>
+                        <HeaderGlobalAction aria-label="Help" onClick={()=> window.open("https://zanderb98.medium.com/actions-analytics-for-watson-assistant-dee3df47ad41", "_blank")}>
                             <Help20 />
                         </HeaderGlobalAction>
                         {/* <HeaderGlobalAction aria-label="User Avatar">
