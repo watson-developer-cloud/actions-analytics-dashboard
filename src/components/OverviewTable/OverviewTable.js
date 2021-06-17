@@ -27,11 +27,14 @@ class OverviewTable extends React.Component {
       let divider = <div style={{ width: "100%", height: "1px", background: "#f4f4f4", marginBottom: "2px" }}></div>
       var tableRows = []
 
+      let isNotRec = (this.props.type === "notRecognized")
+      let isFreqFailed = (this.props.type === "frequentlyFailedPrompts")
+
       // Iterate over data to build jsx rows
       for (var i = 0; i < Math.min(10, data.length); i++) {
         let val = data[i]
 
-        if (this.props.type === "notRecognized") {          
+        if (isNotRec) {          
           tableRows.push(<div className="overview-table-row">
                           <p className="overview-table-label">{val.label}</p>
                           { divider }
@@ -39,15 +42,15 @@ class OverviewTable extends React.Component {
         } else {
             tableRows.push(<div className="overview-table-row">
                             <div className="overview-table-label-wrapper">
-                            { this.props.type == "frequentlyFailedPrompts" && <p className="overview-table-badge">{ val.intent }</p> }
-                            { this.props.type == "frequentlyFailedPrompts" && <ArrowRight16 className="overview-table-arrow" />}
-                            <p className={ this.props.type == "frequentlyFailedPrompts" ? "overview-table-label-wih-badge" :  "overview-table-num-label"}>{ val.label }</p>
+                            { isFreqFailed && <p className="overview-table-badge">{ val.intent }</p> }
+                            { isFreqFailed && <ArrowRight16 className="overview-table-arrow" />}
+                            <p className={ isFreqFailed ? "overview-table-label-wih-badge" :  "overview-table-num-label"}>{ val.label }</p>
                             </div>
-                            <p className="overview-table-num">{ this.props.type === "frequentlyFailedPrompts" ? val.count  + "%" : val.count}</p>
+                            <p className="overview-table-num">{ isFreqFailed ? val.count  + "%" : val.count}</p>
                             <div className="overview-table-progress-container">
                               <div className="overview-table-progress-back"/>
                               <div className={ this.props.type === "mostCommon" ? "overview-table-green-bar" : "overview-table-red-bar" } 
-                                style={{ width: (this.props.type === "frequentlyFailedPrompts" ? val.count : (100 * (val.count / this.props.maxTopicCount))) + "%" }}/>
+                                style={{ width: (isFreqFailed ? val.count : (100 * (val.count / this.props.maxTopicCount))) + "%" }}/>
                               </div>
                           </div>)
         }
@@ -55,15 +58,14 @@ class OverviewTable extends React.Component {
 
       // Add empty cells if there are < 10
       for (i = 0; i < Math.max(0, 10 - data.length); i++) {
-        if (this.props.type === "notRecognized") {          
+        if (isNotRec) {          
           tableRows.push(<div className="overview-table-row">
-                          <div style={{ height: "30px" }}></div>
+                          <p className="overview-table-label"></p>
                           { divider }
                         </div>)
         } else {
             tableRows.push(<div className="overview-table-row">
-                            <p className="overview-table-num-label transparent-text">-</p>
-                            <p className="overview-table-num transparent-text">-</p>
+                            <div className="overview-table-label-wrapper"></div>
                             <div className="overview-table-progress-container">
                               <div className="overview-table-progress-back"/>
                             </div>
@@ -75,7 +77,7 @@ class OverviewTable extends React.Component {
       return <div className="overview-table">
               <p className="panel-title">{ this.titleDict[this.props.type] }</p>
               <p className="overview-table-date">{ this.props.startDate } - { this.props.endDate }</p>
-              { divider }
+              <div style={{ width: "100%", height: "1px", background: "#f4f4f4", marginBottom: isNotRec ? "0" : "10px" }}></div>
               <ul>
                 { tableRows.map((value, index) => {
                   return <li key={index}>{value}</li>

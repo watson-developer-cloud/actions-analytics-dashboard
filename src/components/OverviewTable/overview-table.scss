@@ -61,6 +61,7 @@
     margin-left: 16px;
     margin-right: 16px;
     font-size: 15px;
+    height: 33px;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;    
@@ -72,6 +73,7 @@
 
 .transparent-text {
     color: transparent;
+    float: left;
 }
 
 .overview-table-badge {

@@ -17,7 +17,7 @@ class Graph extends React.Component {
       // Build graph panel with checkboxes for engagement page and Carbon LineChart
       return <div className="graph-panel">
                 <p className="panel-title" style={{ marginBottom: this.props.type == "Prompt success rate" ? "0": "16px" }}>{ this.props.type + " over time" } </p>
-                <fieldset className="bx--fieldset" style={{ visibility: this.props.type == "Engagement" && this.props.data.length > 0 ? "visible" : "hidden"}}>
+                <fieldset className="bx--fieldset" style={{ visibility: this.props.type == "Engagement" && !this.props.noData ? "visible" : "hidden"}}>
                     <Checkbox labelText="Show active users" checked={ this.props.showActiveUsers } id="activeUsersCB"
                         onChange={ (checked) => { this.props.dispatch({type: config.UPDATE, update: {engagement_showActiveUsers: checked}}) } } />
                     <Checkbox labelText="Show conversations" checked={ this.props.showConversations } id="conversationsCB"
@@ -26,7 +26,7 @@ class Graph extends React.Component {
                         onChange={ (checked) => { this.props.dispatch({type: config.UPDATE, update: {engagement_showRequests: checked}}) } } />
                 </fieldset>
                 <div className="chartWrapper">
-                    { !this.props.statsLoaded || this.props.data.length > 0 ?
+                    { !this.props.statsLoaded || !this.props.noData ?
                     <LineChart
                         data={this.props.data}
                         options={this.props.options}>
@@ -93,12 +93,17 @@ const mapStateToProps = (state, ownState) => {
     }
 
     // Load data based on type passed in ownState
-    if (props.type === "Engagement")
-        props.data = loadEngagementData(state)
-    else if (props.type === "Recognition")
+    if (props.type === "Engagement") {
+        let [data, filtered] = loadEngagementData(state)
+        props.data = filtered
+        props.noData = data.length == 0
+    } else if (props.type === "Recognition") {
         props.data = loadRecognitionData(state)
-    else if (props.type === "Prompt success rate")
+        props.noData = props.data.length == 0
+    } else if (props.type === "Prompt success rate") {
         props.data = loadPromptSuccessData(state)
+        props.noData = props.data.length == 0
+    }
 
   }
 
@@ -108,56 +113,60 @@ const mapStateToProps = (state, ownState) => {
 // Load requests, conversations, and active users data
 const loadEngagementData = (state) => {
     let data = []
+    let filtered = []
 
     let startDate = moment(state.startDate, "L")
     let endDate = moment(state.endDate, "L").endOf('day');
 
-    if (state.engagement_showActiveUsers) {
-        for(let i = 0; i < Object.keys(state.uniqueUsers).length; i++) {
-            let date = Object.keys(state.uniqueUsers)[i]
-            
-            // Check data point is in selected range
-            if (moment(date, "L").isBetween(startDate, endDate, "day", "[]")) {
-                data.push({
-                    date: moment(date, "L").toISOString(),
-                    value: state.uniqueUsers[date].count,
-                    group: "Active Users"
-                })
+    for(let i = 0; i < Object.keys(state.uniqueUsers).length; i++) {
+        let date = Object.keys(state.uniqueUsers)[i]
+        
+        // Check data point is in selected range
+        if (moment(date, "L").isBetween(startDate, endDate, "day", "[]")) {
+            let val = {
+                date: moment(date, "L").toISOString(),
+                value: state.uniqueUsers[date].count,
+                group: "Active Users"
             }
+
+            data.push(val)
+            if (state.engagement_showActiveUsers) filtered.push(val)
+        }
+    } 
+
+    for(let i = 0; i < Object.keys(state.uniqueSessions).length; i++) {
+        let date = Object.keys(state.uniqueSessions)[i]
+
+        // Check data point is in selected range
+        if (moment(date, "L").isBetween(startDate, endDate, "day", "[]")) {
+            let val = {
+                date: moment(date, "L").toISOString(),
+                value: state.uniqueSessions[date],
+                group: "Conversations"
+            }
+
+            data.push(val)
+            if (state.engagement_showConversations) filtered.push(val)
+        }
+    }
+    
+    for(let i = 0; i < Object.keys(state.requestCounts).length; i++) {
+        let date = Object.keys(state.requestCounts)[i]
+        
+        // Check data point is in selected range
+        if (moment(date, "L").isBetween(startDate, endDate, "day", "[]")) {
+            let val = {
+                date: moment(date, "L").toISOString(),
+                value: state.requestCounts[date],
+                group: "Requests"
+            }
+
+            data.push(val)
+            if (state.engagement_showRequests) filtered.push(val)
         }
     }
 
-    if (state.engagement_showConversations) {
-        for(let i = 0; i < Object.keys(state.uniqueSessions).length; i++) {
-            let date = Object.keys(state.uniqueSessions)[i]
-
-            // Check data point is in selected range
-            if (moment(date, "L").isBetween(startDate, endDate, "day", "[]")) {
-                data.push({
-                    date: moment(date, "L").toISOString(),
-                    value: state.uniqueSessions[date],
-                    group: "Conversations"
-                })
-            }
-        }
-    }
-
-    if (state.engagement_showRequests) {
-        for(let i = 0; i < Object.keys(state.requestCounts).length; i++) {
-            let date = Object.keys(state.requestCounts)[i]
-            
-            // Check data point is in selected range
-            if (moment(date, "L").isBetween(startDate, endDate, "day", "[]")) {
-                data.push({
-                    date: moment(date, "L").toISOString(),
-                    value: state.requestCounts[date],
-                    group: "Requests"
-                })
-            }
-        }
-    }
-
-    return data
+    return [data, filtered]
 }
 
 // Load recognition percent data
